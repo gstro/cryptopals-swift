@@ -3,6 +3,7 @@ import XCTest
 import Files
 import Cryptor
 import Extensions
+import CryptoSwift
 
 import Cryptopals
 
@@ -113,6 +114,26 @@ class SetOneTests: XCTestCase {
         print("key: \(key)")
         print("decoded: \(plain)")
 
+        XCTAssert(true)
+    }
+
+    // AES in ECB mode
+    func testChallengeSeven() {
+        guard let content = Utils.fileContents(named: "cp7.txt"),
+              let decoded = Data(base64Encoded: content, options: .ignoreUnknownCharacters)
+            else { return XCTFail("cannot decode content") }
+
+        let key = CryptoUtils.byteArray(from: "YELLOW SUBMARINE")
+        XCTAssert(key.hexString() == "59454c4c4f57205355424d4152494e45")
+
+        guard let aes = try? AES(key: key, iv: nil, blockMode: .ECB, padding: NoPadding())
+            else { return XCTFail("could not create AES") }
+
+        guard let bytes = try? aes.decrypt(decoded.bytes),
+              let plain = bytes.utf8()
+            else { return XCTFail("could not decrypt message") }
+
+        print(plain)
         XCTAssert(true)
     }
 }
