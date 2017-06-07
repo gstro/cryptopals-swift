@@ -136,4 +136,14 @@ class SetOneTests: XCTestCase {
         print(plain)
         XCTAssert(true)
     }
+
+    // Detect AES in ECB mode
+    func testChallengeEight() {
+        guard let content = Utils.fileContents(named: "cp8.txt")
+            else { return XCTFail("cannot read content") }
+
+        let repeated = content.lines.filter { Utils.repeatsBytes($0, sized: 16) }
+        XCTAssert(repeated.count == 1)
+        print(repeated[0])
+    }
 }

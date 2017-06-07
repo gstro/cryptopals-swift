@@ -118,6 +118,7 @@ public struct Utils {
      - Parameters:
         - keySize: The size of the key to use for scoring.
         - bytes: The array of bytes to use for scoring.
+     - Returns: Score indicating possibility that provided key size is correct.
     */
     public static func scoreKeySize(_ keySize: Int, bytes: [UInt8]) -> Int {
         let chunkCount = bytes.count / keySize
@@ -127,5 +128,21 @@ public struct Utils {
             let last  = Array(chunk.suffix(from: keySize))
             return acc + first.hamming(last)
         } / chunkCount / keySize
+    }
+
+    /**
+     Checks the given line for repeating chunks of bytes of the given size.
+
+     - Parameters:
+        - line: The line to check for repeating bytes
+        - sized: The chunk size to divide the line.
+     - Returns: If the provided line repeated bytes chunks of the given size
+    */
+    public static func repeatsBytes(_ line: String, sized: Int) -> Bool {
+        var counts = [String: Int]()
+        return CryptoUtils
+            .byteArray(fromHex: line)
+            .chunks(sized)
+            .contains { counts.updateValue(1, forKey: $0.hexString()) != nil }
     }
 }
