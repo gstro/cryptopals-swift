@@ -74,6 +74,24 @@ public extension Array where Element == UInt8 {
     func hamming(_ bytes: [UInt8]) -> Int {
         return zip(self, bytes).reduce(0) { $0 + $1.0.hamming($1.1) }
     }
+
+    /**
+     Pads the byte array according to pkcs#7.
+     https://en.wikipedia.org/wiki/Padding_(cryptography)#PKCS7
+
+     - Parameter blockSize: The size of the blocks to pad to. Negative size will
+        return the original byte array, as will a block size over 255.
+     - Returns: A new byte array padded to the given block size.
+    */
+    func pkcs7(_ blockSize: Int) -> Array<Element> {
+        guard blockSize > 0 &&
+            blockSize <= Int(UInt8.max) &&
+            blockSize != count &&
+            blockSize % count != 0 else { return self }
+
+        let pad = (blockSize > count) ? (blockSize % count) : (blockSize - (count % blockSize))
+        return self + Array(repeating: UInt8(pad), count: pad)
+    }
 }
 
 // MARK: - UInt8 Extensions

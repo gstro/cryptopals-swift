@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6DAA72B1EF74EEB00916FE7 /* SetTwoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DAA72A1EF74EEB00916FE7 /* SetTwoTests.swift */; };
 		OBJ_157 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* Crypto.swift */; };
 		OBJ_158 /* Cryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* Cryptor.swift */; };
 		OBJ_159 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* Digest.swift */; };
@@ -206,6 +207,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E6DAA72A1EF74EEB00916FE7 /* SetTwoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTwoTests.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		OBJ_100 /* CGColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
 		OBJ_101 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_13 /* SetOneTests.swift */,
+				E6DAA72A1EF74EEB00916FE7 /* SetTwoTests.swift */,
 			);
 			name = CryptopalsTests;
 			path = Tests/CryptopalsTests;
@@ -556,7 +559,7 @@
 			path = ".build/checkouts/CryptoSwift.git--6440749087414195235/Sources/CryptoSwift";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -565,7 +568,6 @@
 				OBJ_14 /* Dependencies */,
 				OBJ_145 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_57 /* BlockMode */ = {
@@ -800,7 +802,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_145 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -976,6 +978,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_315 /* SetOneTests.swift in Sources */,
+				E6DAA72B1EF74EEB00916FE7 /* SetTwoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
