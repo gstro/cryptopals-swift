@@ -87,7 +87,7 @@ public extension Array where Element == UInt8 {
         guard blockSize > 0 &&
             blockSize <= Int(UInt8.max) &&
             blockSize != count &&
-            blockSize % count != 0 else { return self }
+            count % blockSize != 0 else { return self }
 
         let pad = (blockSize > count) ? (blockSize % count) : (blockSize - (count % blockSize))
         return self + Array(repeating: UInt8(pad), count: pad)

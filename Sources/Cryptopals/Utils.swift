@@ -2,6 +2,7 @@ import Foundation
 import Cryptor
 import Extensions
 import Files
+import CryptoSwift
 
 public struct Utils {
 
@@ -154,5 +155,56 @@ public struct Utils {
             .byteArray(fromHex: line)
             .chunks(sized)
             .contains { counts.updateValue(1, forKey: $0.hexString()) != nil }
+    }
+
+    /**
+     CBC Mode crypto operations.
+    */
+    public enum CbcOp {
+        case encrypt
+        case decrypt
+
+        fileprivate func run(_ block: [UInt8], prev: [UInt8], ecb: AES) -> ([UInt8], [UInt8])? {
+            switch self {
+            case .encrypt:
+                guard let cypherBlock: [UInt8] = try? ecb.encrypt(prev.xor(block))
+                    else { return nil }
+                return (cypherBlock, cypherBlock)
+            case .decrypt:
+                guard let decrypted = try? ecb.decrypt(block)
+                    else { return nil }
+                return (prev.xor(decrypted), block)
+            }
+        }
+    }
+
+    /**
+     Run a CBC Mode crypto operation.
+
+     - Parameters:
+        - bytes: The bytes on which to perform the operation.
+        - keyBytes: The bytes for the key used in the operation.
+        - iv: The initialization vector.
+        - op: The selected CBC operation to perform.
+     - Returns: The transformed bytes if successful, or nil if unsuccessful.
+    */
+    public static func cbc(_ bytes: [UInt8], keyBytes: [UInt8], iv: [UInt8], op: CbcOp) -> [UInt8]? {
+        func go(_ acc: [[UInt8]], rem: [[UInt8]], previous: [UInt8], ecb: AES) -> [[UInt8]]? {
+            guard let block = rem.first
+                else { return acc }
+
+            guard let (next, prev) = op.run(block, prev: previous, ecb: ecb)
+                else { return nil }
+
+            return go(acc + [next], rem: Array(rem.dropFirst()), previous: prev, ecb: ecb)
+        }
+
+        guard let ecb = try? AES(key: keyBytes, iv: nil, blockMode: .ECB, padding: NoPadding())
+            else { return nil }
+
+        let padSize = keyBytes.count
+        let chunked = bytes.chunks(padSize)
+
+        return go([], rem: chunked, previous: iv, ecb: ecb)?.reduce([], +)
     }
 }
