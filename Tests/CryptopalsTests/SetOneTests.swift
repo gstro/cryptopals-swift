@@ -7,6 +7,13 @@ import CryptoSwift
 
 import Cryptopals
 
+// Prevent printing results from
+// continuous integration build
+#if CI_BUILD
+    func println(_ object: Any) {}
+    func print(_ object: Any){}
+#endif
+
 class SetOneTests: XCTestCase {
 
     // Convert hex to base64

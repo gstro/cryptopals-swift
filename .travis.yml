@@ -1,0 +1,5 @@
+language: objective-c 
+osx_image: xcode8.3
+
+script:
+- xcodebuild clean build test -project cryptopals.xcodeproj -scheme cryptopals_ci -configuration Release

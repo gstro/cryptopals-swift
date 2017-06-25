@@ -256,7 +256,7 @@
 		OBJ_148 /* Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_149 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_150 /* Cryptopals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cryptopals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_151 /* CryptopalsTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = CryptopalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_151 /* CryptopalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = CryptopalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_17 /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
 		OBJ_18 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		OBJ_19 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
@@ -1041,6 +1041,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "CI_BUILD=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/.build/checkouts/CommonCrypto.git-1219305460334093717",
@@ -1065,6 +1066,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "CI_BUILD=1";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/.build/checkouts/CommonCrypto.git-1219305460334093717",
@@ -1313,7 +1315,7 @@
 				INFOPLIST_FILE = cryptopals.xcodeproj/CryptopalsTests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DCI_BUILD";
 				TARGET_NAME = CryptopalsTests;
 			};
 			name = Release;
