@@ -80,18 +80,28 @@ public struct Utils {
      otherwise nil.
 
      - Note: For compatibility with xcode and swiftpm,
-        store all resources in ~/Cryptopals/Resources
+        store all resources in ~/Cryptopals/Resources. For 
+        continuous integration, store files in project root/Resources,
+        and pass CI_BUILD flag to tester
 
      - Parameter named: The filename to read.
      - Returns: The file contents as a string or nil.
     */
     public static func fileContents(named: String) -> String? {
+        #if CI_BUILD
+        return try? Folder
+            .current
+            .subfolder(named: "Resources")
+            .file(named: named)
+            .readAsString()
+        #else
         return try? Folder
             .home
             .subfolder(named: "Cryptopals")
             .subfolder(named: "Resources")
             .file(named: named)
             .readAsString()
+        #endif
     }
 
     /**
