@@ -2,7 +2,6 @@ import Foundation
 import XCTest
 import Files
 import Cryptor
-import Extensions
 import CryptoSwift
 
 import Cryptopals

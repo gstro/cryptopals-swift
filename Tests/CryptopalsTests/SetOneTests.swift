@@ -2,7 +2,6 @@ import Foundation
 import XCTest
 import Files
 import Cryptor
-import Extensions
 import CryptoSwift
 
 import Cryptopals
@@ -41,7 +40,7 @@ class SetOneTests: XCTestCase {
         let key     = Utils.solveSingleByteXor(decoded)?.key
 
         XCTAssertNotNil(key)
-        key.run { print("Key: \(UnicodeScalar($0))") }
+        key.map { print("Key: \(UnicodeScalar($0))") }
     }
 
     // Detect single-character XOR
@@ -67,7 +66,7 @@ class SetOneTests: XCTestCase {
         }
 
         XCTAssertNotNil(phrase)
-        phrase.run { print("phrase: \($0)") }
+        phrase.map { print("phrase: \($0)") }
     }
 
     // Implement repeating-key XOR
@@ -133,7 +132,7 @@ class SetOneTests: XCTestCase {
         let key = CryptoUtils.byteArray(from: "YELLOW SUBMARINE")
         XCTAssert(key.hexString() == "59454c4c4f57205355424d4152494e45")
 
-        guard let aes = try? AES(key: key, iv: nil, blockMode: .ECB, padding: NoPadding())
+        guard let aes = try? AES.init(key: key, blockMode: .ECB, padding: .noPadding)
             else { return XCTFail("could not create AES") }
 
         guard let bytes = try? aes.decrypt(decoded.bytes),
@@ -149,7 +148,7 @@ class SetOneTests: XCTestCase {
         guard let content = Utils.fileContents(named: "cp8.txt")
             else { return XCTFail("cannot read content") }
 
-        let repeated = content.lines.filter { Utils.repeatsBytes($0, sized: 16) }
+        let repeated = content.lines().filter { Utils.repeatsBytes($0, sized: 16) }
         XCTAssert(repeated.count == 1)
         print(repeated[0])
     }

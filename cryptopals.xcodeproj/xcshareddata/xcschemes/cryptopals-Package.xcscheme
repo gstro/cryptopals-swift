@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_152"
-               BuildableName = "Cryptor.framework"
-               BlueprintName = "Cryptor"
+               BlueprintIdentifier = "cryptopals::Cryptopals"
+               BuildableName = "Cryptopals.framework"
+               BlueprintName = "Cryptopals"
                ReferencedContainer = "container:cryptopals.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,35 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_168"
-               BuildableName = "Files.framework"
-               BlueprintName = "Files"
-               ReferencedContainer = "container:cryptopals.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_175"
-               BuildableName = "Extensions.framework"
-               BlueprintName = "Extensions"
-               ReferencedContainer = "container:cryptopals.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_226"
+               BlueprintIdentifier = "CryptoSwift::CryptoSwift"
                BuildableName = "CryptoSwift.framework"
                BlueprintName = "CryptoSwift"
                ReferencedContainer = "container:cryptopals.xcodeproj">
@@ -70,27 +42,40 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_294"
-               BuildableName = "Cryptopals.framework"
-               BlueprintName = "Cryptopals"
+               BlueprintIdentifier = "Files::Files"
+               BuildableName = "Files.framework"
+               BlueprintName = "Files"
+               ReferencedContainer = "container:cryptopals.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Cryptor::Cryptor"
+               BuildableName = "Cryptor.framework"
+               BlueprintName = "Cryptor"
                ReferencedContainer = "container:cryptopals.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_310"
+               BlueprintIdentifier = "cryptopals::CryptopalsTests"
                BuildableName = "CryptopalsTests.xctest"
                BlueprintName = "CryptopalsTests"
                ReferencedContainer = "container:cryptopals.xcodeproj">
@@ -114,18 +99,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_152"
-            BuildableName = "Cryptor.framework"
-            BlueprintName = "Cryptor"
+            BlueprintIdentifier = "cryptopals::Cryptopals"
+            BuildableName = "Cryptopals.framework"
+            BlueprintName = "Cryptopals"
             ReferencedContainer = "container:cryptopals.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = ""
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

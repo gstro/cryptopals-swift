@@ -1,6 +1,5 @@
 import Foundation
 import Cryptor
-import Extensions
 import Files
 import CryptoSwift
 
@@ -53,7 +52,6 @@ public struct Utils {
     */
     private static func score(_ str: String) -> Int {
         return str.lowercased()
-            .charactersArray
             .reduce(0) { $0 + (charFreq[$1] ?? 0) }
     }
 
@@ -199,7 +197,7 @@ public struct Utils {
             return go(acc + [next], rem: Array(rem.dropFirst()), previous: prev, ecb: ecb)
         }
 
-        guard let ecb = try? AES(key: keyBytes, iv: nil, blockMode: .ECB, padding: NoPadding())
+        guard let ecb = try? AES.init(key: keyBytes, blockMode: .ECB, padding: .noPadding)
             else { return nil }
 
         let padSize = keyBytes.count

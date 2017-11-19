@@ -1,6 +1,5 @@
 import Foundation
 import Cryptor
-import Extensions
 
 // MARK: - Array Extensions
 public extension Array {
@@ -20,7 +19,7 @@ public extension Array {
 }
 
 // MARK: - Array Extensions (BitwiseOperations)
-public extension Array where Element: BitwiseOperations {
+public extension Array where Element: FixedWidthInteger {
     /**
      Performs an XOR operation on every element with the provided element.
 
@@ -146,8 +145,8 @@ public extension String {
      - Returns: The array of bytes after the XOR operation.
     */
     func xor(repeatedKey: String) -> [UInt8] {
-        let keyLen      = repeatedKey.characters.count
-        let plainLen    = characters.count
+        let keyLen      = repeatedKey.count
+        let plainLen    = count
         let repeatCount = Int(ceil(Double(plainLen) / Double(keyLen)))
         let extended    = String(repeating: repeatedKey, count: repeatCount)
         let plainBytes  = CryptoUtils.byteArray(from: self)
@@ -165,5 +164,32 @@ public extension String {
     func hamming(_ str: String) -> Int {
         return CryptoUtils.byteArray(from: self)
             .hamming(CryptoUtils.byteArray(from: str))
+    }
+}
+
+extension Data {
+    
+    public func string(encoding: String.Encoding) -> String? {
+        return String(data: self, encoding: encoding)
+    }
+}
+
+// SwifterSwift Extensions -- Will remove once SwifterSwift packaging is fixed
+extension Array {
+
+    public func item(at index: Int) -> Element? {
+        guard startIndex..<endIndex ~= index else { return nil }
+        return self[index]
+    }
+}
+
+extension String {
+
+    public func lines() -> [String] {
+        var result = [String]()
+        enumerateLines { line, _ in
+            result.append(line)
+        }
+        return result
     }
 }
